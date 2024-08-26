@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <template>
-  <div class="hero bg-base-200 h-96 rounded-lg ">
+  <div class="hero bg-gradient-to-r from-pink-500 to-violet-500 h-96 rounded-lg ">
     <div class="hero-content text-center">
       <div class="max-w-md">
         <h1 class="text-5xl font-bold">Hello there</h1>

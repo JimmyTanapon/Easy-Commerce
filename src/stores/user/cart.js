@@ -10,11 +10,11 @@ export const useUserCartStore = defineStore("cart", () => {
       items.value = JSON.parse(previousCart);
     }
   };
-  const summaryPrice = computed(() =>
-    items.value.reduce((accumulator, item) => {
+  const summaryPrice = computed(() => {
+    return items.value.reduce((accumulator, item) => {
       return accumulator + item.quantity * item.price;
-    }, 0)
-  );
+    }, 0);
+  });
   const summaryQuantity = computed(() =>
     items.value.reduce((accumulator, item) => {
       return accumulator + parseInt(item.quantity);
@@ -37,14 +37,34 @@ export const useUserCartStore = defineStore("cart", () => {
 
   const updateQuantity = (index, quantity) => {
     items.value[index].quantity = quantity;
+
     localStorage.setItem("cart-store", JSON.stringify(items.value));
   };
   const removeItem = (index) => {
     items.value.splice(index, 1);
     localStorage.setItem("cart-store", JSON.stringify(items.value));
   };
+  const checkOutOrder = (userData) => {
+    let checkOutOrder = {
+      ...userData,
+      totalPrice: summaryPrice.value,
+      payment: "Credit Card",
+      createdDate: new Date().toLocaleString(),
+      orderNumber: "AA" + Math.floor(Math.random() * 90000 + 1000),
+    };
+    localStorage.setItem("checkout-order", JSON.stringify(checkOutOrder));
+  };
 
+  const loadCheckoutOrder = () => {
+    const previousOrder = localStorage.getItem("checkout-order");
+    if (previousOrder) {
+      return JSON.parse(previousOrder);
+    } else {
+      return;
+    }
+  };
   return {
+    loadCheckoutOrder,
     loadcart,
     items,
     addToCart,
@@ -52,5 +72,6 @@ export const useUserCartStore = defineStore("cart", () => {
     removeItem,
     summaryPrice,
     summaryQuantity,
+    checkOutOrder,
   };
 });

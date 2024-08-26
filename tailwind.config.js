@@ -4,7 +4,10 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui"), require("tailwind-scrollbar")],
+  plugins: [
+    require("daisyui"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
   daisyui: {
     themes: [
       {

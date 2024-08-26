@@ -32,7 +32,7 @@ const userCartStore = useUserCartStore();
                     <select
                       class="w-1/2 h-auto rounded-md p-4"
                       v-model="item.quantity"
-                      @change="userCartStore(index, event.target.value)"
+                      @change="userCartStore.updateQuantity(index, $event.target.value)"
                     >
                       <option v-for="quantity in [1, 2, 3, 4, 5]">
                         {{ quantity }}
