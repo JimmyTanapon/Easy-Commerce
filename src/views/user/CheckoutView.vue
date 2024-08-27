@@ -45,7 +45,8 @@ const checkout = () => {
 <template>
   <div class="container">
     <UserLayout>
-      <div class="flex p-4 gap-2">
+     
+      <div   class="flex p-4 gap-2">
         <!-- Form -->
         <div class="flex-auto w-64 p-8 rounded-badge bg-slate-200">
           <div class="grid gap-6 mb-6 md:grid-row-2">

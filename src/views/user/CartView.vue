@@ -9,7 +9,8 @@ const userCartStore = useUserCartStore();
   <div class="container">
     <UserLayout>
       <h1 class="text-3xl font-boldl m-4">Shopping Cart</h1>
-      <div class="flex gap-4 p-4">
+      
+      <div  v-if="userCartStore.items.length > 0" class="flex gap-4 p-4">
         <div class="flex-auto w-64 bg-base-200 p-8 rounded-badge">
           <div class="flex" v-for="(item, index) in userCartStore.items">
             <div class="flex-1">
@@ -81,6 +82,9 @@ const userCartStore = useUserCartStore();
             </RouterLink>
           </div>
         </div>
+      </div>
+      <div v-else class="   flex  justify-center  p-10 w-full">
+         <p class="  text-2xl font-semibold">ไม่มี order ใน ตะกร้าสินค้า</p>
       </div>
     </UserLayout>
   </div>

@@ -158,7 +158,10 @@ onMounted(() => {
             class="menu menu-sm dropdown-content bg-white bg-opacity-100 backdrop-blur-lg backdrop-filter rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a class="justify-between"> Profile </a>
+              <RouterLink :to="{name:'profile'}">
+
+                <a class="justify-between"> Profile </a>
+              </RouterLink>
             </li>
             <li><a @click="logout">Logout</a></li>
           </ul>
